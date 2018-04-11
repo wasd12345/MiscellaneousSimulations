@@ -14,7 +14,8 @@ Created on Thu Mar 22 23:05:29 2018
 # 1. finish the methods below
 # 2. make some graphs / histograms etc. to visualize reults
 # 3. add tracking for other things you think would be interesting to look at.
-# 4. confirm time to 0 return follows arcsine distribution (beta ) when have p=
+# 4. confirm time to 0 return follows arcsine distribution (beta ) when:
+#the probability for the time of the last visit to the origin in a random walk is distributed as the arcsine distribution Beta(1/2, 1/2)
 
 # feel free to add anything else you want.
 
@@ -30,18 +31,26 @@ import scipy.stats
 
 class RandomWalks():
     
-	def __init__(self):
+    def __init__(self):
         self.random_seed = 123
         np.random.seed(self.random_seed)
         
-		self.steps_probabilities = {-2:.25, -1:.20, 0:.05, +1:.25, +2:.25}
-        
+        #example dict of {stepsize:probability}
+        self.steps_probabilities = {-2:.25, -1:.20, 0:.05, +1:.25, +2:.25}#
         self.walk_max_length = 1e4
-        
         self.N_walks = None
-        
         #other thigns to track...
         
+        
+    def SingleRandomWalk(self):
+        """
+        Single simulation of one random walk
+        """
+        #simulate the walk w random draws: from categorical distribution:
+        x = np.random.choice(self.steps_probabilities.keys(),
+                             p=self.steps_probabilities.values(),
+                             size=self.walk_max_length)
+        pass        
         
         
     def Get_Returns_to_zero(self,random_walk):
@@ -69,15 +78,7 @@ class RandomWalks():
     
     
     
-    def SingleRandomWalk(self):
-        """
-        Single simulation of one random walk
-        """
-        #simulate the walk w random draws: from categorical distribution:
-        x = np.random.choice(self.steps_probabilities.keys(),
-                             p=self.steps_probabilities.values(),
-                             size=self.walk_max_length)
-        pass
+
     
     
     
@@ -91,7 +92,7 @@ class RandomWalks():
             self.SingleRandomWalk(...)
             self.Get_1_walk_summary_stats(...)
             self.Get_Returns_to_zero(random_walk)
-            self.Get_Returns_to_zero(random_walk)
+            self.Get_Time_btwn_zeros(...)
             self.Visualize_results()
     
     
@@ -115,7 +116,7 @@ class RandomWalks():
     
     
     
-def main():
+if __name__ == '__main__':
     
     N_walks = 1e6
     RW = RandomWalks()
