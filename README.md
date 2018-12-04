@@ -28,11 +28,13 @@ for you to do. There will be a lot of overlap between these. You can reuse struc
 
 
 
+- Spaghetti hoops
+
 
 
 I will get started on these ones:
 
-- convolutions of correlated gaussian components
+- convolutions of [0-100% overlapping] correlated gaussian components
 
 - N chaotic pendulums
 
@@ -40,8 +42,16 @@ I will get started on these ones:
 
 - bayesian hyperpriors
 
+- N series of ramdom vars -> expected value of max, when using 1,2...,K estimators; for a few common distributions -> DQ
+
+- quadratic residue autocorrelations
+
+- egg drop problem probabilistic version: RL solution
 
 
 
 
-
+--------------------------------------------------------
+- basic noisy channel / erasure channel sim for RL error correction
+- RL queueing sim
+- RL elevator dispatch
